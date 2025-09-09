@@ -6,8 +6,6 @@ target/
 dist/
 node_modules/
 
-# Configuración sensible
-backend/src/main/resources/application.properties
 
 # Archivos de entorno
 .env
