@@ -1,0 +1,20 @@
+<svg width="250" height="60" viewBox="0 0 250 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .main-color { fill: #00E1EE; }
+    .text-color { fill: #1a1a1a; font-family: 'Segoe UI', sans-serif; font-weight: 600; }
+  </style>
+
+  <!-- Icono: Libro abierto + diana -->
+  <g>
+    <circle cx="30" cy="30" r="18" stroke="#00E1EE" stroke-width="4"/>
+    <circle cx="30" cy="30" r="8" fill="#00E1EE"/>
+    <path d="M16 18 Q30 10 44 18" stroke="#00E1EE" stroke-width="2" fill="none"/>
+    <path d="M16 42 Q30 50 44 42" stroke="#00E1EE" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Texto Talent ED -->
+  <text x="70" y="36" font-size="24" class="text-color">
+    Talent
+    <tspan class="main-color">ED</tspan>
+  </text>
+</svg>

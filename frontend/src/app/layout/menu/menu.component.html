@@ -1,0 +1,8 @@
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <img src="assets/talent-ed.svg" alt="Logo" height="40" />
+  </ng-template>
+  <ng-template pTemplate="end">
+    <button pButton icon="pi pi-user" class="p-button-sm p-button-text" (click)="goToProfile()"></button>
+  </ng-template>
+</p-menubar>
