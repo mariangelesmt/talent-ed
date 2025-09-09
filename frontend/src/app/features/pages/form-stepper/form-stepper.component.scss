@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 5rem;
+
+  .custom-progressbar {
+    height: 5px !important;
+  }
+}
+
+.card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.p-inputtext-lg {
+  font-size: 1.1rem;
+  padding: 0.75rem;
+}
+
+:host ::ng-deep .p-progressbar {
+  height: 5px !important;
+}
+
+

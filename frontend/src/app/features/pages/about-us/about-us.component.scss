@@ -1,0 +1,50 @@
+.info-blocks-container,
+.features-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.info-block,
+.feature-card {
+  flex: 0 0 280px;
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color, #1976d2);
+}
+
+.icon-circle i {
+  color: #000;
+  font-size: 1.75rem;
+}
+
+.about-us h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.info-blocks-container::-webkit-scrollbar,
+.features-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.info-blocks-container::-webkit-scrollbar-thumb,
+.features-container::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 4px;
+}

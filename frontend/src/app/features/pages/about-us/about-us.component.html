@@ -1,0 +1,71 @@
+<div class="about-us p-5">
+  <div class="hero p-grid pt-2">
+    <div class="p-col-12 p-md-6 text-center">
+      <h1>Transformando formación y selección</h1>
+      <p class="subtitle">
+        Talent ED conecta <strong>centros educativos</strong> con el mejor <strong>talento docente</strong>,
+        creando procesos de selección más rápidos e inteligentes. </p>
+    </div>
+    <div class="p-col-12 p-md-6 flex justify-content-center">
+      <img src="assets/images/about.png" alt="Sobre Talent_ed" style="width:80%; height:auto;">
+    </div>
+  </div>
+
+  <!-- Misión, visión y valores -->
+  <div class="info-blocks-container p-mt-5">
+    <div class="info-block" *ngFor="let item of infoBlocks">
+      <div class="p-card p-shadow-2 flex flex-column align-items-center text-center p-4">
+        <div class="icon-circle mb-3">
+          <i [class]="item.icon"></i>
+        </div>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Funcionalidades -->
+  <div class="features pt-6">
+    <h2 class="text-center">¿Qué puedes hacer con Talent ED?</h2>
+    <div class="features-container">
+      <div class="feature-card" *ngFor="let feature of features">
+        <div class="p-card p-shadow-2 flex flex-column align-items-center text-center p-4">
+          <div class="icon-circle mb-3">
+            <i [class]="feature.icon"></i>
+          </div>
+          <h4>{{ feature.title }}</h4>
+          <p>{{ feature.desc }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="audience-section pt-6">
+    <h2 class="text-center">¿Para quién es Talent ED?</h2>
+    <div class="container grid">
+      <!-- Para Centros -->
+      <div class="col-6">
+        <div class="p-card p-4">
+          <h3 class="text-xl font-bold mb-4">Centros Educativos</h3>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Publica ofertas de empleo fácilmente.</li>
+            <li>Automatiza procesos de selección.</li>
+            <li>Encuentra al docente ideal rápidamente.</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Para Docentes -->
+      <div class="col-6">
+        <div class="p-card p-4">
+          <h3 class="text-xl font-bold mb-4">Docentes</h3>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Descubre oportunidades laborales adaptadas a ti.</li>
+            <li>Responde a formularios inteligentes.</li>
+            <li>Accede a centros educativos de toda España.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

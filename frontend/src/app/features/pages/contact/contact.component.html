@@ -1,0 +1,83 @@
+<div class="contact-us p-5 surface-ground min-h-screen">
+  <div class="grid gap-5 justify-content-center pt-2">
+
+    <div class="col-12 md:col-5 flex flex-column justify-content-start gap-6">
+      <div>
+        <h1 class="contact-title">¿Hablamos?</h1>
+        <p class="contact-subtitle">
+          En Talent ED estamos aquí para ayudarte a encontrar el mejor talento docente para tu centro educativo.
+          Si tienes dudas, sugerencias o simplemente quieres saber más sobre cómo funciona nuestra plataforma, rellena
+          el formulario y te contactaremos.
+        </p>
+      </div>
+
+      <div class="contact-item flex align-items-start gap-3">
+        <div class="icon-circle">
+          <i class="pi pi-pencil"></i>
+        </div>
+        <div>
+          <h4 class="m-0">Déjanos tus datos</h4>
+          <p class="m-0 text-sm text-color-secondary">Rellena el formulario y te llamamos</p>
+        </div>
+      </div>
+
+      <div class="contact-item flex align-items-start gap-3">
+        <div class="icon-circle">
+          <i class="pi pi-phone"></i>
+        </div>
+        <div>
+          <h4 class="m-0">O llámanos tú</h4>
+          <p class="m-0 text-sm text-color-secondary">Lunes a viernes de 9:00 a 18:30 (GMT+1)</p>
+          <strong>+32 999 99 99 99</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha: Formulario dentro de card -->
+    <div class="col-12 md:col-7">
+      <div class="p-card p-shadow-3">
+        <form class="grid formgrid p-fluid p-3">
+          <div class="field col-12 md:col-6">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" pInputText />
+          </div>
+
+          <div class="field col-12 md:col-6">
+            <label for="apellidos">Apellidos</label>
+            <input id="apellidos" type="text" pInputText />
+          </div>
+
+          <div class="field col-12 md:col-6">
+            <label for="email">Email corporativo</label>
+            <input id="email" type="email" pInputText />
+          </div>
+
+          <div class="field col-12 md:col-6">
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" type="text" pInputText placeholder="612 34 56 78" />
+          </div>
+
+          <div class="field col-12 md:col-6">
+            <label for="cargo">Cargo</label>
+            <p-dropdown inputId="cargo" [options]="cargoOptions" placeholder="Selecciona"></p-dropdown>
+          </div>
+
+          <div class="field col-12">
+            <label for="mensaje">Escribe tu petición</label>
+            <textarea id="mensaje" rows="4" pInputTextarea></textarea>
+          </div>
+
+          <div class="field-checkbox col-12">
+            <p-checkbox [ngModelOptions]="{ standalone: true }" inputId="terms" binary="true"
+                        [(ngModel)]="accepted"></p-checkbox>
+            <label for="terms">He leído y acepto el tratamiento de mis datos conforme la política de privacidad.</label>
+          </div>
+
+          <div class="col-12">
+            <button pButton type="submit" label="Enviar" class="w-full p-button-primary"></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<section class="centros-container">
+  <header class="intro">
+    <h1>Centros educativos que confían en <span class="text-black-alpha-90">Talent </span><span
+      class="text-primary-color">ED</span></h1>
+    <p>
+      Estos son algunos de los colegios, academias e institutos que ya utilizan
+      nuestra plataforma para optimizar sus procesos de selección y encontrar
+      al mejor talento educativo.
+    </p>
+  </header>
+
+  <div class="centros-grid">
+    <p-card *ngFor="let centro of centros" class="centro-card">
+      <ng-template pTemplate="header">
+        <img [src]="centro.image" alt="{{ centro.name }}" />
+      </ng-template>
+      <h2>{{ centro.name }}</h2>
+      <p class="ubicacion">{{ centro.location }}</p>
+      <p class="descripcion">{{ centro.description }}</p>
+    </p-card>
+  </div>
+</section>

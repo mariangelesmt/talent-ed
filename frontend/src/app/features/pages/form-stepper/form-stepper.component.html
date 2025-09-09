@@ -1,0 +1,54 @@
+<!-- Barra de progreso -->
+<p-progressBar
+  [value]="progressValue"
+  [showValue]="false"
+  styleClass="mb-4 custom-progressbar">
+</p-progressBar>
+
+<div *ngIf="isLoading" class="text-center text-lg font-semibold">
+  Cargando formulario...
+</div>
+
+<div *ngIf="!isLoading && questions.length" class="flex flex-column align-items-center">
+  <div class="card p-6 w-full text-center">
+    <h2 class="mb-4">{{ questions[activeIndex].text }}</h2>
+
+    <!-- Campo de texto -->
+    <input *ngIf="questions[activeIndex].type === 'TEXT'"
+           pInputText
+           [(ngModel)]="answers[questions[activeIndex].id ?? 0]"
+           class="w-full p-inputtext-lg"
+           placeholder="Escribe tu respuesta" />
+
+    <!-- Campo numérico -->
+    <input *ngIf="questions[activeIndex].type === 'NUMBER'"
+           type="number"
+           pInputText
+           [(ngModel)]="answers[questions[activeIndex].id ?? 0]"
+           class="w-full p-inputtext-lg"
+           placeholder="Introduce un número" />
+
+    <!-- Select -->
+    <!--<select *ngIf="questions[activeIndex].type === 'SELECT'"
+            [(ngModel)]="answers[questions[activeIndex].id ?? 0]"
+            class="w-full p-inputtext-lg">
+      <option value="" disabled selected>Selecciona una opción</option>
+      <option *ngFor="let opt of questions[activeIndex].options" [value]="opt">{{ opt }}</option>
+    </select>
+  </div>-->
+
+  <!-- Botones -->
+  <div class="mt-4 flex justify-content-between w-full">
+    <button pButton type="button" label="Anterior" icon="pi pi-arrow-left"
+            (click)="prev()" [disabled]="activeIndex === 0" class="p-button-secondary"></button>
+      <button *ngIf="activeIndex < questions.length - 1"
+              pButton type="button" label="Siguiente" icon="pi pi-arrow-right"
+              (click)="next()"></button>
+
+      <button *ngIf="activeIndex === questions.length - 1"
+              pButton type="button" label="Finalizar" icon="pi pi-check"
+              class="p-button-success"
+              (click)="finish()"></button>
+
+  </div>
+</div>

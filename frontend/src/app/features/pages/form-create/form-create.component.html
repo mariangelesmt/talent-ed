@@ -1,0 +1,87 @@
+<div class="flex justify-content-center align-items-center">
+  <p-card class="w-full sm:w-10 md:w-8 lg:w-6 shadow-2xl border-round-2xl p-4 pt-20">
+
+    <!-- Título -->
+    <div class="text-center mb-4">
+      <h2 class="text-2xl font-bold">Crear Formulario</h2>
+      <p class="text-color-secondary">Configura los datos básicos y añade preguntas personalizadas</p>
+    </div>
+
+    <div class="flex flex-column p-fluid gap-3 mb-4">
+      <p-dropdown
+        [options]="offers"
+        optionLabel="title"
+        optionValue="id"
+        [(ngModel)]="form.offerId"
+        placeholder="Selecciona una oferta"
+        class="w-full">
+      </p-dropdown>
+      <input pInputText placeholder="Título" [(ngModel)]="form.title" class="w-full" />
+      <textarea pInputTextarea rows="3" placeholder="Descripción" [(ngModel)]="form.description"
+                class="w-full"></textarea>
+    </div>
+
+    <!-- Preguntas -->
+    <div class="mb-4">
+      <div class="flex justify-content-between align-items-center border-bottom-2 border-100 mb-3">
+        <h3 class="text-xl font-semibold">Preguntas:</h3>
+        <button
+          pButton
+          label="Añadir pregunta"
+          icon="pi pi-plus"
+          (click)="addQuestion()"
+          class="p-button-outlined p-button-secondary p-button-sm">
+        </button>
+      </div>
+
+      <div
+        *ngFor="let q of form.questions; let i = index"
+        class="mb-3 pb-3 border-bottom-1 border-100 flex flex-column gap-2">
+
+        <h4 class="font-semibold text-lg">Pregunta {{ i + 1 }}</h4>
+        <div class="w-full flex">
+          <!-- Texto de la pregunta -->
+          <input
+            pInputText
+            placeholder="Texto de la pregunta"
+            [(ngModel)]="q.text"
+            class="flex-1"
+          />
+
+          <!-- Tipo de pregunta -->
+          <p-dropdown
+            [options]="[
+            {label: 'Texto', value: 'TEXT'},
+            {label: 'Número', value: 'NUMBER'}
+          ]"
+            [(ngModel)]="q.type"
+            placeholder="Tipo de la respuesta" class="ml-2 w-48"
+          >
+          </p-dropdown>
+        </div>
+        <!-- Selector OpenAI Trigger -->
+        <div class="flex align-items-center gap-2">
+          <p-checkbox
+            [(ngModel)]="q.openaiTrigger"
+            binary="true">
+          </p-checkbox>
+          <label>Activar generación dinámica (IA)</label>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="flex justify-content-center w-100 pt-4">
+      <button
+        pButton
+        label="Guardar"
+        class="w-full"
+        (click)="saveForm()">
+      </button>
+    </div>
+
+  </p-card>
+</div>
+
+<p-toast></p-toast>
+

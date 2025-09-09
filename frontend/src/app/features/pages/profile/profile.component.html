@@ -1,0 +1,86 @@
+<div class="flex justify-content-center p-5">
+  <p-card *ngIf="user">
+    <div class="grid align-items-start">
+      <div class="col-12 md:col-4 flex justify-content-center">
+        <img
+          src="assets/images/user.png"
+          alt="User"
+          class="border-round shadow-2 w-auto max-h-20rem h-auto"
+        />
+      </div>
+      <div class="col-12 md:col-8">
+        <!-- Nombre y email -->
+        <h2>
+          {{ user.name }} {{ user.lastName }}
+        </h2>
+        <p class="text-700" style="margin: 0 0 1rem 0;">
+          {{ user.email }}
+        </p>
+
+        <!-- Roles -->
+        <div class="mb-3">
+          <span class="mr-2">Roles:</span>
+          <ng-container *ngFor="let role of user.roles">
+            <p-tag [value]="role" severity="info" class="mr-2 mb-2"></p-tag>
+          </ng-container>
+        </div>
+
+        <p-divider></p-divider>
+
+        <!-- Acciones -->
+        <div class="grid">
+          <!-- Acciones de ADMIN -->
+          <ng-container *ngIf="isAdmin(); else userActions">
+            <div class="col-12 md:col-6 mb-2">
+              <button pButton type="button" label="Crear usuario" icon="pi pi-user-plus" class="w-full"
+                      severity="secondary" [outlined]="true"
+                      (click)="createUser()"></button>
+            </div>
+            <div class="col-12 md:col-6 mb-2">
+              <button pButton type="button" label="Crear formulario" icon="pi pi-file-edit" class="w-full"
+                      severity="secondary" [outlined]="true"
+                      (click)="createForm()"></button>
+            </div>
+          </ng-container>
+
+          <!-- Acciones de USER -->
+          <ng-template #userActions>
+            <div class="col-12 md:col-6 mb-2">
+              <button pButton type="button" label="Ver ofertas" icon="pi pi-briefcase" class="w-full"
+                      severity="secondary" [outlined]="true"
+                      (click)="goToOffers()"></button>
+            </div>
+
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </p-card>
+
+  <div *ngIf="!user">
+    <div class="flex flex-column justify-content-center align-items-center pt-5">
+      <h2 class="text-xl font-bold text-primary">Acceso requerido</h2>
+
+      <p class="mb-4 text-gray-700">
+        No has iniciado sesión. Por favor, inicia sesión o regístrate para acceder a tu perfil.
+      </p>
+
+      <div class="flex justify-content-center gap-3">
+        <button
+          pButton
+          label="Iniciar sesión"
+          icon="pi pi-sign-in"
+          class="p-button-primary"
+          (click)="navigateTo('login/')"
+        ></button>
+        <button
+          pButton
+          label="Registrarse"
+          icon="pi pi-user-plus"
+          class="p-button-outlined" (click)="navigateTo('register/')"
+        ></button>
+      </div>
+    </div>
+
+  </div>
+</div>

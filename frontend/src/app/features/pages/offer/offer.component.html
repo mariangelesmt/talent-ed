@@ -1,0 +1,40 @@
+<div class="grid p-4">
+  <!-- Panel lateral -->
+  <div class="col-12 md:col-3">
+    <p-panel header="Filtros">
+      <div class="mb-3 flex  flex-column p-fluid">
+        <label>Tipo de jornada</label>
+        <p-dropdown [options]="schedules" [(ngModel)]="selectedSchedule" placeholder="Selecciona una" class="w-full" />
+      </div>
+      <div class="mb-3 flex  flex-column p-fluid">
+        <label>Centro</label>
+        <p-dropdown [options]="centers" [(ngModel)]="selectedCenter" optionLabel="name"
+                    placeholder="Selecciona un centro" class="w-full" />
+      </div>
+      <div class="flex justify-content-center pt-2">
+        <p-button label="Aplicar filtros" icon="pi pi-filter" (click)="filtrarOfertas()" />
+
+      </div>
+    </p-panel>
+  </div>
+
+  <!-- Tarjetas de ofertas -->
+  <div class="col-12 md:col-9">
+    <div class="grid">
+      <div *ngFor="let oferta of ofertasFiltradas" class="col-12 sm:col-6 lg:col-4">
+        <p-card [header]="oferta.title" [subheader]="oferta.school" class="pb-1">
+          <img [src]="oferta.center.image" alt="Oferta" class="w-full mb-2" />
+          <h4>{{ oferta.center?.name ?? '' }}</h4>
+          <p>{{ oferta.description }}</p>
+          <p-tag severity="secondary" [value]="getSchedule(oferta?.schedule ?? '')"></p-tag>
+          <div class="flex justify-content-between pt-3">
+            <p-button class="" label="+ Información" severity="secondary" [outlined]="true"
+                      (click)="verDetalles(oferta)" />
+            <p-button *ngIf="hasRoleAdmin()" class="pl-2" label="Inscripciones" (click)="verInscritos(oferta)" />
+            <p-button *ngIf="!hasRoleAdmin()" class="pl-2" label="Inscribirme" (click)="goToForm(oferta)" />
+          </div>
+        </p-card>
+      </div>
+    </div>
+  </div>
+</div>

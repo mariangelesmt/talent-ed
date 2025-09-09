@@ -1,0 +1,56 @@
+<div class="flex justify-center m-8">
+  <p-card class="p-shadow-6">
+    <div class="flex flex-wrap gap-6 items-start">
+
+      <!-- Contenido principal -->
+      <div class="flex-1 min-w-[280px]">
+        <h2 class="text-3xl font-bold mb-2 text-blue-900">{{ offer?.title }}</h2>
+        <h4 class="text-lg text-gray-600 mb-4">{{ offer?.center?.name }}</h4>
+
+        <div class="mb-4">
+          <strong>Centro educativo:</strong>
+          <span class="ml-1">{{ offer?.center?.name }}</span>
+        </div>
+
+        <div class="mb-4">
+          <strong>Descripción:</strong>
+          <p class="mt-1 text-gray-700">{{ offer?.description }}</p>
+        </div>
+
+        <div class="mb-4" *ngIf="offer?.requirements?.length">
+          <strong>Requisitos:</strong>
+          <ul class="list-disc list-inside mt-1 text-gray-700">
+            <li *ngFor="let req of offer?.requirements">{{ req }}</li>
+          </ul>
+        </div>
+
+        <div class="mb-4">
+          <strong>Tipo de jornada: </strong>
+          <p-tag severity="secondary" [value]="getSchedule(offer?.schedule ?? '')"></p-tag>
+        </div>
+
+        <div class="mb-4">
+          <strong>Ubicación:</strong>
+          <span class="ml-1">{{ offer?.center?.location }}</span>
+        </div>
+
+        <div class="mb-4">
+          <strong>Fecha de publicación:</strong>
+          <span class="ml-1">{{ offer?.publishedAt | date }}</span>
+        </div>
+
+        <div class="flex justify-center mt-6">
+          <button pButton type="button" label="Inscribirme" icon="pi pi-send"
+                  class="p-button-raised p-button-primary px-6 py-3 text-lg"
+                  (click)="goToForm()"></button>
+        </div>
+      </div>
+
+      <div class="flex-1 min-w-[250px] flex justify-center items-start">
+        <img [src]="offer?.center?.image" alt="{{ offer?.center?.name }}"
+             class="rounded-lg shadow-md object-contain max-h-96 w-full" />
+      </div>
+
+    </div>
+  </p-card>
+</div>

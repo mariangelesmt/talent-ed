@@ -1,0 +1,91 @@
+<div class="card p-3 m-3">
+  <h2>Docentes inscritos</h2>
+
+  <p-table
+    [value]="responses"
+    [paginator]="true"
+    [rows]="10"
+    [responsiveLayout]="'scroll'"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nombre</th>
+        <th>Ciudad</th>
+        <th>Email</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-row>
+      <tr>
+        <td>{{ row.user.name }}</td>
+        <td>{{ row.user.city }}</td>
+        <td>{{ row.user.email }}</td>
+        <td>{{ row.submittedAt | date: 'dd-MM-yyyy' }}</td>
+        <td>
+          <p-tag
+            [value]="row.status"
+            [severity]="getStatusSeverity(row.status)"
+          ></p-tag>
+        </td>
+        <td>
+          <button
+            pButton
+            icon="pi pi-eye"
+            class="p-button-rounded"
+            (click)="viewDetails(row)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-dialog
+  header="Detalles de la inscripción:"
+  [(visible)]="displayModal"
+  [modal]="true"
+  [style]="{ width: '50vw' }"
+  [dismissableMask]="true"
+>
+  <ng-container *ngIf="selectedResponse">
+    <div class="grid">
+      <div class="col-6">
+        <p><strong>Nombre:</strong> {{ selectedResponse.user.name }} {{ selectedResponse.user.lastName }}</p>
+        <p><strong>Email:</strong> {{ selectedResponse.user.email }}</p>
+        <p><strong>Ciudad:</strong> {{ selectedResponse.user.city }}</p>
+      </div>
+      <div class="col-6">
+        <h5>Cambiar estado:</h5>
+        <div class="flex justify-content-start mt-3 gap-2">
+          <p-dropdown
+            [options]="statusOptions"
+            [(ngModel)]="selectedStatus"
+            optionLabel="label"
+            optionValue="value"
+            placeholder="Selecciona estado"
+          ></p-dropdown>
+          <button
+            pButton
+            icon="pi pi-save"
+            class="p-button mx-2"
+            (click)="saveStatus()"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <h3 class="mt-3">Respuestas: </h3>
+    <div *ngFor="let ans of selectedResponse.answers" class="mb-3">
+      <p><strong>{{ ans.question.text }}:</strong> {{ ans.answerText }}</p>
+    </div>
+
+    <div class="mt-4">
+
+    </div>
+  </ng-container>
+</p-dialog>
