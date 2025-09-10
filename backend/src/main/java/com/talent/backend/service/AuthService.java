@@ -1,6 +1,7 @@
 package com.talent.backend.service;
 
 import com.talent.backend.model.User;
+import com.talent.backend.model.dto.UserDTO;
 import com.talent.backend.repository.UserRepository;
 import com.talent.backend.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -25,9 +26,14 @@ public class AuthService {
         return JwtUtil.generateToken(user);
     }
 
-    public User register(User user) {
-        // Encriptar la contraseña antes de guardar
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+    public User register(UserDTO request) {
+        User user = new User();
+        user.setEmail(request.getEmail());
+        user.setName(request.getName());
+        user.setLastName(request.getLastName());
+        user.setCity(request.getCity());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setRoles(request.getRoles());
         return userRepository.save(user);
     }
 

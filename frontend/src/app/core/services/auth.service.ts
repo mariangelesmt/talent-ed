@@ -23,7 +23,7 @@ export class AuthService {
           email: res.email,
           roles: res.roles,
           name: res.name,
-          lastName: res.name,
+          lastName: res.lastName,
         };
         localStorage.setItem('token', res.token);
         this.authState.setUser(userRoles);

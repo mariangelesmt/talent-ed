@@ -1,6 +1,7 @@
 package com.talent.backend.controller;
 
 import com.talent.backend.model.User;
+import com.talent.backend.model.dto.UserDTO;
 import com.talent.backend.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,7 @@ public class AuthController {
                 "roles", user.getRoles()));
     }
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody User user) {
+    public ResponseEntity<?> register(@RequestBody UserDTO user) {
         User savedUser = authService.register(user);
         return ResponseEntity.ok(Map.of(
                 "id", savedUser.getId(),
